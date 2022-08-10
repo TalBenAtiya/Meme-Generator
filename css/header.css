@@ -5,7 +5,7 @@
     height: 100px;
 }
 
-.main-header img{
+.main-header > img{
     align-self: center;
     width: 250px;
     height: fit-content;

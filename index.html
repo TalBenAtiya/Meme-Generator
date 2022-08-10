@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title> Meme Generator</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body onload="onInit()">
     <header class="flex main-header">
         <img src="./img/LOGO.png">
@@ -24,12 +26,7 @@
     </section>
 
     <main class="main-layout">
-        <div class="grid-container">
-            <!-- <img src="./img/1.jpg" alt=""> -->
-            <!-- <img src="./img/2.jpg" alt=""> -->
-            <!-- <img src="./img/3.jpg" alt=""> -->
-            <!-- <img src="./img/4.jpg" alt=""> -->
-        </div>
+        <div class="grid-container"></div>
     </main>
 
     <div hidden class="editor">
@@ -39,30 +36,36 @@
             </div>
             <div class="editor-opts">
 
-                <input oninput="onChangeTxt(this.value)" class="text" type="text" placeholder="change text">
-             
-                <button ><img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-                <button ><img src="./icons/add.png"></button>
-                <button ><img src="./icons/trash.png"></button>
-                <button ><img src="./icons/increase font - icon.png"></button>
-                <button ><img src="./icons/decrease font - icon.png"></button>
-                <button ><img src="./icons/align-to-left.png"></button>
-                <button ><img src="./icons/center-text-alignment.png"></button>
-                <button ><img src="./icons/align-to-right.png"></button>
-                <button ><img src="./icons/text stroke.png"></button>
-                <button ><img src="./icons/paint-board-and-brush.png"></button>
+                <input oninput="onSetLineTxt(this.value)" class="meme-text" type="text" placeholder="change text">
+
+                <button onclick="changeSelectedLine()"><img
+                        src="./icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button onclick="onAddLine()"><img src="./icons/add.png"></button>
+                <button onclick="onRemoveLine()"><img src="./icons/trash.png"></button>
+                <button onclick="changeFontSize('plus')"><img src="./icons/increase font - icon.png"></button>
+                <button onclick="changeFontSize('minus')"><img src="./icons/decrease font - icon.png"></button>
+                <button onclick="onTxtAlign('right')"><img src="./icons/align-to-left.png"></button>
+                <button onclick="onTxtAlign('center')"><img src="./icons/center-text-alignment.png"></button>
+                <button onclick="onTxtAlign('left')"><img src="./icons/align-to-right.png"></button>
+                <button><img src="./icons/text stroke.png"></button>
+                <button><img src="./icons/paint-board-and-brush.png"></button>
 
                 <select class="font">
                     <option value="serif">Serif</option>
                     <option value="sans-serif">Sans serif</option>
                     <option value="monospace">Monospace</option>
                 </select>
+                <button onclick="onTxtMove('up')" style="font-size: 20px;">&uarr;</button>
+                <button onclick="onTxtMove('down')" style="font-size: 20px;">&#8595</button>
+
             </div>
         </div>
     </div>
 
     <script src="./js/services/meme.service.js"></script>
-    <script src="./js/main.conroller.js"></script>
-    
+    <script src="./js/gallery.controller.js"></script>
+    <script src="./js/meme.conroller.js"></script>
+
 </body>
+
 </html>
