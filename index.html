@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Meme Generator</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body onload="onInit()">
+    <header class="flex main-header">
+        <img src="./img/LOGO.png">
+        <div class="flex">
+            <ul class="flex clean-ul">
+                <li><a href="">Saved Memes</a></li>
+                <li><a href="">Gallery</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="flex filter-section">
+        <input type="text" placeholder="Search meme">
+    </section>
+
+    <main class="main-layout">
+        <div class="grid-container">
+            <!-- <img src="./img/1.jpg" alt=""> -->
+            <!-- <img src="./img/2.jpg" alt=""> -->
+            <!-- <img src="./img/3.jpg" alt=""> -->
+            <!-- <img src="./img/4.jpg" alt=""> -->
+        </div>
+    </main>
+
+    <div hidden class="editor">
+        <div class="main-layout editor-container">
+            <div class="canvas-container">
+                <canvas class="canvas" width="400px" height="400px" style="background-color:white;"></canvas>
+            </div>
+            <div class="editor-opts">
+
+                <input oninput="onChangeTxt(this.value)" class="text" type="text" placeholder="change text">
+             
+                <button ><img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button ><img src="./icons/add.png"></button>
+                <button ><img src="./icons/trash.png"></button>
+                <button ><img src="./icons/increase font - icon.png"></button>
+                <button ><img src="./icons/decrease font - icon.png"></button>
+                <button ><img src="./icons/align-to-left.png"></button>
+                <button ><img src="./icons/center-text-alignment.png"></button>
+                <button ><img src="./icons/align-to-right.png"></button>
+                <button ><img src="./icons/text stroke.png"></button>
+                <button ><img src="./icons/paint-board-and-brush.png"></button>
+
+                <select class="font">
+                    <option value="serif">Serif</option>
+                    <option value="sans-serif">Sans serif</option>
+                    <option value="monospace">Monospace</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/services/meme.service.js"></script>
+    <script src="./js/main.conroller.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,12 @@
+.clean-ul{
+    list-style: none;
+}
+
+.flex{
+    display: flex;
+}
+
+.main-layout{
+    width: 70%;
+    margin: auto;
+}
