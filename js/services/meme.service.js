@@ -13,8 +13,15 @@ let gImgs = [
     { id: gImgId++, url: './img/8.jpg', keywords: ['movies', 'happy',] },
     { id: gImgId++, url: './img/9.jpg', keywords: ['laugh', 'classic'] },
     { id: gImgId++, url: './img/10.jpg', keywords: ['laugh', 'politicians'] },
+    { id: gImgId++, url: './img/11.jpg', keywords: ['movies', 'boxing'] },
+    { id: gImgId++, url: './img/12.jpg', keywords: ['funny', 'classic' , 'celebrity'] },
+    { id: gImgId++, url: './img/13.jpg', keywords: ['movies', 'classic', 'celebrity'] },
+    { id: gImgId++, url: './img/14.jpg', keywords: ['movies', 'classic', 'celebrity'] },
+    { id: gImgId++, url: './img/15.jpg', keywords: ['movies', 'classic', 'celebrity'] },
+    { id: gImgId++, url: './img/16.jpg', keywords: ['movies', 'funny', 'laugh'] },
+    { id: gImgId++, url: './img/17.jpg', keywords: ['politicians',] },
+    { id: gImgId++, url: './img/18.jpg', keywords: ['movies', 'classic'] },
 ]
-
 
 function getMeme() {
     return gMeme
@@ -28,6 +35,7 @@ function setMeme(id) {
         lines: [
             {
                 txt: 'Change Txt',
+                font: 'Impact',
                 size: 30,
                 align: 'center',
                 color: 'white',
@@ -49,6 +57,7 @@ function addMemeLine() {
     gMeme.lines.push(
         {
             txt: 'Change Txt',
+            font: 'impact',
             size: 30,
             align: 'center',
             color: 'white',
@@ -83,9 +92,21 @@ function memeTxtAlign(str){
     gMeme.lines[gMeme.selectedLineIdx].align = str
 }
 
+function memeFontStyle(str){
+    gMeme.lines[gMeme.selectedLineIdx].font = str
+}
+
+function lineFontColor(color){
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function lineStrokeColor(color){
+    gMeme.lines[gMeme.selectedLineIdx].strokeClr = color 
+}
+
 function changeMemeLine(){
     gMeme.selectedLineIdx++
-    if ( gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx = 0
+    if ( gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
 }
 
 function memeFontSize(str){

@@ -6,11 +6,6 @@ function onInit() {
     gElCanvas = document.querySelector('.canvas');
     gCtx = gElCanvas.getContext('2d');
     renderGallery()
-
-    // window.addEventListener('resize', () => {
-    //     resizeCanvas()
-    //     renderCanvas()
-    // })  
 }
 
 function renderMeme(id) {
@@ -21,20 +16,24 @@ function renderMeme(id) {
     img.onload = () => {
         meme.lines.map(line => {
 
-            gCtx.font = `${line.size}px  serif`;
-            gCtx.textAlign = `${line.align}`;
-            gCtx.strokeStyle = `${line.strokeClr}`;
-            gCtx.lineWidth = 7;
-            gCtx.strokeText(`${line.txt}`, line.pos.x, line.pos.y);
-            gCtx.fillStyle = 'white';
-            gCtx.fillText(`${line.txt}`, line.pos.x, line.pos.y);
+            gCtx.font = `${line.size}px ${line.font}`;
+            gCtx.textAlign = line.align;
+            gCtx.strokeStyle = line.strokeClr;
+            gCtx.lineWidth = 5;
+            gCtx.strokeStyle = gCtx.shadowColor = line.strokeClr
+            gCtx.shadowOffsetX = gCtx.shadowOffsetY = 3
+            gCtx.shadowBlur = 5
+            gCtx.fillStyle = line.color;
+            gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
+            gCtx.fillText(line.txt, line.pos.x, line.pos.y);
+           
+
         }
         )
     }
 
     drawSelectionRect()
 }
-
 
 function changeSelectedLine() {
     changeMemeLine()
@@ -43,7 +42,6 @@ function changeSelectedLine() {
     const meme = getMeme()
     document.querySelector('.meme-text').value = meme.lines[meme.selectedLineIdx].txt
 }
-
 
 function onSetLineTxt(txt) {
     setLineTxt(txt)
@@ -58,7 +56,7 @@ function onAddLine() {
     document.querySelector('.meme-text').value = meme.lines[meme.selectedLineIdx].txt
 }
 
-function onRemoveLine(){
+function onRemoveLine() {
     removeMemeLine()
     renderMeme()
 }
@@ -67,32 +65,41 @@ function drawSelectionRect() {
     const meme = getMeme()
     let line = meme.lines[meme.selectedLineIdx]
 
-    gCtx.beginPath();
-    gCtx.rect(0, line.pos.y - (line.size), gElCanvas.width, line.size + 5);
-    gCtx.lineWidth = 2;
-    gCtx.strokeStyle = 'red';
-    gCtx.stroke();
-    gCtx.closePath();
+    gCtx.beginPath()
+    gCtx.rect(0, line.pos.y - (line.size), gElCanvas.width, line.size + 10)
+    gCtx.lineWidth = 1
+    gCtx.strokeStyle = '#f78536'
+    gCtx.stroke()
+    gCtx.closePath()
 
 }
 
-function onTxtMove(str){
+function onTxtMove(str) {
     memeTxtMove(str)
     renderMeme()
 }
 
-function onTxtAlign(str){
+function onTxtAlign(str) {
     memeTxtAlign(str)
     renderMeme()
 }
 
-function changeFontSize(str){
+function changeFontSize(str) {
     memeFontSize(str)
     renderMeme()
 }
 
-// function resizeCanvas() {
-//     const elContainer = document.querySelector('.canvas-container')
-//     gElCanvas.width = elContainer.offsetWidth
-//     gElCanvas.height = elContainer.offsetHeight
-// }
+function onFontColor(color) {
+    lineFontColor(color)
+    renderMeme()
+}
+
+function onStrokeColor(color) {
+    lineStrokeColor(color)
+    renderMeme()
+}
+
+function onFontStyle(str){
+    memeFontStyle(str)
+    renderMeme()
+}

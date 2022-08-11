@@ -10,3 +10,11 @@
     width: 70%;
     margin: auto;
 }
+
+.main-header .list{
+height: 0;
+}
+
+.position{
+    position: fixed;
+}

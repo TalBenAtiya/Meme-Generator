@@ -11,26 +11,28 @@
 
 <body onload="onInit()">
     <header class="flex main-header">
-        <img src="./img/LOGO.png">
-        <div class="flex">
+        <img onclick="backToGallery()" src="./img/logo.png">
+        <img onclick="openUserOpts()" class="user-opts" src="./icons/hamburger.png">
+        <div class="list flex">
             <ul class="flex clean-ul">
-                <li><a href="">Saved Memes</a></li>
-                <li><a href="">Gallery</a></li>
-                <li><a href="">About</a></li>
+                <li onclick="backToGallery()"><a >Saved Memes</a></li>
+                <li onclick="backToGallery()"><a>Gallery</a></li>
+                <li onclick="backToGallery()"><a>About</a></li>
             </ul>
         </div>
     </header>
 
-    <section class="flex filter-section">
-        <input type="text" placeholder="Search meme">
-    </section>
+    <main>
+        <section class="flex filter-section">
+            <input type="text" placeholder="Search meme">
+        </section>
 
-    <main class="main-layout">
-        <div class="grid-container"></div>
+        <div class=" main-layout grid-container"></div>
     </main>
 
     <div hidden class="editor">
-        <div class="main-layout editor-container">
+        
+        <div class="editor-container">
             <div class="canvas-container">
                 <canvas class="canvas" width="400px" height="400px" style="background-color:white;"></canvas>
             </div>
@@ -38,29 +40,40 @@
 
                 <input oninput="onSetLineTxt(this.value)" class="meme-text" type="text" placeholder="change text">
 
-                <button onclick="changeSelectedLine()"><img
-                        src="./icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button onclick="changeSelectedLine()">
+                    <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png">
+                </button>
                 <button onclick="onAddLine()"><img src="./icons/add.png"></button>
                 <button onclick="onRemoveLine()"><img src="./icons/trash.png"></button>
-                <button onclick="changeFontSize('plus')"><img src="./icons/increase font - icon.png"></button>
-                <button onclick="changeFontSize('minus')"><img src="./icons/decrease font - icon.png"></button>
+                <button onclick="onTxtMove('up')" style="font-size: 20px;">&uarr;</button>
+                <button onclick="onTxtMove('down')" style="font-size: 20px;">&#8595</button>
                 <button onclick="onTxtAlign('right')"><img src="./icons/align-to-left.png"></button>
                 <button onclick="onTxtAlign('center')"><img src="./icons/center-text-alignment.png"></button>
                 <button onclick="onTxtAlign('left')"><img src="./icons/align-to-right.png"></button>
-                <button><img src="./icons/text stroke.png"></button>
-                <button><img src="./icons/paint-board-and-brush.png"></button>
-
-                <select class="font">
-                    <option value="serif">Serif</option>
-                    <option value="sans-serif">Sans serif</option>
-                    <option value="monospace">Monospace</option>
+                <div class="stroke-clr">
+                    <button><img src="./icons/text stroke.png"></button>
+                    <input oninput="onStrokeColor(this.value)" type="color">
+                </div>
+                <div class="font-clr">
+                    <button><img src="./icons/paint-board-and-brush.png"></button>
+                    <input oninput="onFontColor(this.value)" type="color">
+                </div>
+                <select onchange="onFontStyle(this.value)" class="font">
+                    <option value="Impact">Impact</option>
+                    <option value="Ariel">Ariel</option>
+                    <option value="Tahoma">Tahoma</option>
                 </select>
-                <button onclick="onTxtMove('up')" style="font-size: 20px;">&uarr;</button>
-                <button onclick="onTxtMove('down')" style="font-size: 20px;">&#8595</button>
+                <button onclick="changeFontSize('plus')"><img src="./icons/increase font - icon.png"></button>
+                <button onclick="changeFontSize('minus')"><img src="./icons/decrease font - icon.png"></button>
+
 
             </div>
         </div>
     </div>
+
+    <footer class="main-footer">
+        <img src="./img/logo.png">
+    </footer>
 
     <script src="./js/services/meme.service.js"></script>
     <script src="./js/gallery.controller.js"></script>

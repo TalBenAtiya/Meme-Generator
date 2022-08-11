@@ -1,5 +1,6 @@
 :root {
     --clr-main: #f78536;
-    --clr-secondary: #dfebed;
-    --clr3: #2b4450;  
+    --clr-secondary: #ffffff;
+    --clr3: rgb(225, 225, 225);
+    --clr4: rgb(115, 113, 113);
 }
