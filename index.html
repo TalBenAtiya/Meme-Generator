@@ -11,8 +11,8 @@
 
 <body onload="onInit()">
     <header class="flex main-header">
-        <img onclick="backToGallery()" src="./img/logo.png">
-        <img onclick="openUserOpts()" class="user-opts" src="./icons/hamburger.png">
+        <img onclick="backToGallery()" src="../img/logo.png">
+        <img onclick="openUserOpts()" class="user-opts" src="../icons/hamburger.png">
         <div class="list flex">
             <ul class="flex clean-ul">
                 <li onclick="backToGallery()"><a >Saved Memes</a></li>
@@ -65,14 +65,17 @@
                 </select>
                 <button onclick="changeFontSize('plus')"><img src="./icons/increase font - icon.png"></button>
                 <button onclick="changeFontSize('minus')"><img src="./icons/decrease font - icon.png"></button>
-
-
             </div>
+        </div>
+        <div class="flex local-btns">
+            <button onclick="onSaveMeme()">Save</button>
+            <button onclick="onDownloadMeme()">Download</button>
+            <button onclick="onShareMeme()">Share</button>
         </div>
     </div>
 
     <footer class="main-footer">
-        <img src="./img/logo.png">
+        <img src="../img/logo.png">
     </footer>
 
     <script src="./js/services/meme.service.js"></script>
