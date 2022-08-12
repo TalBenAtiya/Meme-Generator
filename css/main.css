@@ -1,6 +1,6 @@
 @import url(vars.css);
 @import url(helpers.css);
-@import url(/css/header.css);
+@import url(header.css);
 
 * {
     box-sizing: border-box;

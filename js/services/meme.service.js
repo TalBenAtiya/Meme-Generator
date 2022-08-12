@@ -7,12 +7,11 @@ let isFlexible = false
 
 function getMeme() {
     return gMeme
-
 }
 
 function setMeme(id) {
     gMeme = {
-        selectedImgId: isFlexible ? getRandomInt(1, gImgs.length) : id,
+        selectedImgId: id,
         selectedLineIdx: 0,
         lines: [
             {
