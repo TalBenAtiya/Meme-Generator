@@ -1,27 +1,9 @@
 "use strict"
-let gImgId = 1
-let gMeme
 
-let gImgs = [
-    { id: gImgId++, url: './img/1.jpg', keywords: ['politicians', 'funny'] },
-    { id: gImgId++, url: './img/2.jpg', keywords: ['animals', 'cute'] },
-    { id: gImgId++, url: './img/3.jpg', keywords: ['baby', 'animals', 'cute'] },
-    { id: gImgId++, url: './img/4.jpg', keywords: ['cute', 'animals',] },
-    { id: gImgId++, url: './img/5.jpg', keywords: ['success', 'happy', 'classic'] },
-    { id: gImgId++, url: './img/6.jpg', keywords: ['funny', 'classic',] },
-    { id: gImgId++, url: './img/7.jpg', keywords: ['funny', 'happy',] },
-    { id: gImgId++, url: './img/8.jpg', keywords: ['movies', 'happy',] },
-    { id: gImgId++, url: './img/9.jpg', keywords: ['laugh', 'classic'] },
-    { id: gImgId++, url: './img/10.jpg', keywords: ['laugh', 'politicians'] },
-    { id: gImgId++, url: './img/11.jpg', keywords: ['movies', 'boxing'] },
-    { id: gImgId++, url: './img/12.jpg', keywords: ['funny', 'classic' , 'celebrity'] },
-    { id: gImgId++, url: './img/13.jpg', keywords: ['movies', 'classic', 'celebrity'] },
-    { id: gImgId++, url: './img/14.jpg', keywords: ['movies', 'classic', 'celebrity'] },
-    { id: gImgId++, url: './img/15.jpg', keywords: ['movies', 'classic', 'celebrity'] },
-    { id: gImgId++, url: './img/16.jpg', keywords: ['movies', 'funny', 'laugh'] },
-    { id: gImgId++, url: './img/17.jpg', keywords: ['politicians',] },
-    { id: gImgId++, url: './img/18.jpg', keywords: ['movies', 'classic'] },
-]
+let gMeme
+let gSavedMemes = []
+let gRandomLines = ['i like falafel!', 'god damn!', 'jiggle wiggle', 'oh snap', 'hehe that dog', 'LMAO','frogy wogy', 'what are those','hop hop', 'funny buns', 'LOL', 'your mum', 'oew pew', 'penny weeny','loco coco' ]
+let isFlexible = false
 
 function getMeme() {
     return gMeme
@@ -30,11 +12,11 @@ function getMeme() {
 
 function setMeme(id) {
     gMeme = {
-        selectedImgId: id,
+        selectedImgId: isFlexible ? getRandomInt(1, gImgs.length) : id,
         selectedLineIdx: 0,
         lines: [
             {
-                txt: 'Change Txt',
+                txt: isFlexible ? gRandomLines[getRandomInt(0, gRandomLines.length - 1)] : 'Change Text',
                 font: 'Impact',
                 size: 30,
                 align: 'center',
@@ -44,7 +26,7 @@ function setMeme(id) {
             },
         ],
     }
-
+    isFlexible = false
 }
 
 function addMemeLine() {
@@ -69,8 +51,8 @@ function addMemeLine() {
     console.log(gMeme.selectedLineIdx);
 }
 
-function removeMemeLine(){
-    gMeme.lines.splice(gMeme.selectedLineIdx , 1)
+function removeMemeLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     gMeme.selectedLineIdx--
 }
 
@@ -78,45 +60,77 @@ function setLineTxt(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
-function memeTxtMove(str){
-    if (str === 'up'){
+function memeTxtMove(str) {
+    if (str === 'up') {
         gMeme.lines[gMeme.selectedLineIdx].pos.y -= 10
-    } else if (str === 'down'){
-        gMeme.lines[gMeme.selectedLineIdx].pos.y += 10 
+    } else if (str === 'down') {
+        gMeme.lines[gMeme.selectedLineIdx].pos.y += 10
     }
 
 
 }
 
-function memeTxtAlign(str){
+function memeTxtAlign(str) {
     gMeme.lines[gMeme.selectedLineIdx].align = str
 }
 
-function memeFontStyle(str){
+function memeFontStyle(str) {
     gMeme.lines[gMeme.selectedLineIdx].font = str
 }
 
-function lineFontColor(color){
+function lineFontColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
-function lineStrokeColor(color){
-    gMeme.lines[gMeme.selectedLineIdx].strokeClr = color 
+function lineStrokeColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].strokeClr = color
 }
 
-function changeMemeLine(){
+function changeMemeLine() {
     gMeme.selectedLineIdx++
-    if ( gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
+    if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx = 0
 }
 
-function memeFontSize(str){
-    if (str === 'minus'){
+function memeFontSize(str) {
+    if (str === 'minus') {
         gMeme.lines[gMeme.selectedLineIdx].size -= 3
-    } else if (str === 'plus'){
+    } else if (str === 'plus') {
         gMeme.lines[gMeme.selectedLineIdx].size += 3
     }
 }
 
-function getGalleryImg() {
-    return gImgs
+function saveMeme(url) {
+    gMeme.imgUrl = url
+    gSavedMemes.push(gMeme)
+    _saveMemeToStorage()
+}
+
+function _saveMemeToStorage() {
+    saveToStorage('memesDB', gSavedMemes)
+}
+
+function createRandomMeme(){
+    gMeme = {
+        selectedImgId: getRandomInt(1, gImgs.length),
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: gRandomLines[getRandomInt(0, gRandomLines.length - 1)],
+                font: 'Impact',
+                size: 30,
+                align: 'center',
+                color: 'white',
+                strokeClr: 'black',
+                pos: { x: gElCanvas.width / 2, y: 50 },
+            },
+        ],
+    }
+    isFlexible = true
+    return gMeme.selectedImgId
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }

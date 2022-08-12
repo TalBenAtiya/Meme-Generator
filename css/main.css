@@ -23,14 +23,20 @@ a {
     text-decoration: none;
 }
 
+button {
+    cursor: pointer;
+}
+
+
 
 .filter-section {
     display: flex;
     width: 100%;
     background-color: var(--clr-main);
     padding: 1.5em;
-    height: 80px;
+    min-height: 80px;
     align-items: center;
+    justify-content: space-around;
 }
 
 .filter-section input {
@@ -39,6 +45,28 @@ a {
     background-color: var(--clr-main);
     border: 0;
     border-bottom: 1px solid var(--clr-secondary);
+}
+
+.filter-section button {
+    background-color: rgb(142, 80, 171);;
+    border: 0;
+    padding: 0.5em;
+    font-size: 15px;
+    border-radius: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.filter-section button:hover{
+    color: var(--clr-secondary);
+}
+
+.sort-opts span {
+    margin-inline-end: 15px;
+    cursor: pointer;
+}
+
+.sort-opts span:hover{
+    color: var(--clr-secondary);
 }
 
 .grid-container {
@@ -81,7 +109,6 @@ a {
 .canvas-container {
     width: 400px;
     height: 400px;
-    margin-inline-end: 3em;
     margin-bottom: 3em;
 }
 
@@ -94,6 +121,7 @@ a {
     gap: 1em;
     align-items: center;
     justify-content: center;
+    align-content: center;
     margin-bottom: 3em;
 }
 
@@ -158,6 +186,32 @@ select {
     cursor: pointer;
 }
 
+.local-btns {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 0.8em
+}
+
+.local-btns button {
+    font-size: 15px;
+    padding: 0.5em;
+    background-color: var(--clr-main);
+    border: none;
+    border-radius: 0.6em;
+    color: white;
+}
+
+.local-btns>:first-child {
+    background-color: rgb(161, 38, 218);
+
+}
+
+.local-btns>:last-child {
+    background-color: rgb(27, 122, 216);
+
+}
+
 .main-footer {
     display: flex;
     justify-content: center;
@@ -172,6 +226,11 @@ select {
     height: fit-content;
     object-fit: cover;
 }
+
+
+
+
+
 
 /* Tablet */
 @media (min-width: 650px) {
@@ -198,6 +257,11 @@ select {
         margin-bottom: 0;
         width: fit-content;
         height: 10px;
+    }
+
+
+    .canvas-container {
+        margin-inline-end: 3em;
     }
 
     .main-header ul>li:hover {

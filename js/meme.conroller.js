@@ -5,16 +5,18 @@ let gCtx
 function onInit() {
     gElCanvas = document.querySelector('.canvas');
     gCtx = gElCanvas.getContext('2d');
+    renderFilterOpts()
     renderGallery()
 }
 
-function renderMeme(id) {
+function renderMeme() {
     const meme = getMeme()
+    console.log(meme);
     let img = new Image()
     img.src = `./img/${meme.selectedImgId}.jpg`;
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     img.onload = () => {
-        meme.lines.map(line => {
+        meme.lines.forEach(line => {
 
             gCtx.font = `${line.size}px ${line.font}`;
             gCtx.textAlign = line.align;
@@ -26,13 +28,10 @@ function renderMeme(id) {
             gCtx.fillStyle = line.color;
             gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
             gCtx.fillText(line.txt, line.pos.x, line.pos.y);
-           
-
         }
         )
     }
-
-    drawSelectionRect()
+        drawSelectionRect()
 }
 
 function changeSelectedLine() {
@@ -68,7 +67,10 @@ function drawSelectionRect() {
     gCtx.beginPath()
     gCtx.rect(0, line.pos.y - (line.size), gElCanvas.width, line.size + 10)
     gCtx.lineWidth = 1
-    gCtx.strokeStyle = '#f78536'
+    gCtx.strokeStyle = 'white'
+    gCtx.shadowOffsetX = 0
+    gCtx.shadowOffsetY = 0
+    gCtx.shadowBlur = 0
     gCtx.stroke()
     gCtx.closePath()
 
@@ -101,5 +103,23 @@ function onStrokeColor(color) {
 
 function onFontStyle(str){
     memeFontStyle(str)
+    renderMeme()
+}
+
+function onSaveMeme(){
+    const imgUrl = gElCanvas.toDataURL();
+    saveMeme(imgUrl)
+}
+
+function onDownloadMeme(elLink) {
+    const data = gElCanvas.toDataURL();
+    elLink.href = data;
+    elLink.download = 'My-Meme';
+    
+}
+
+function onRandomMeme(){
+    const imgId = createRandomMeme()
+    onSetImg(imgId)
     renderMeme()
 }
