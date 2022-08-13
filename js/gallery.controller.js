@@ -15,12 +15,14 @@ function onSetImg(id) {
     renderMeme()
 
     document.querySelector('main').hidden = true
+    document.querySelector('.filter-container').hidden = true
 }
 
 function backToGallery() {
     document.querySelector('.editor').hidden = true
     document.querySelector('main').hidden = false
-
+    document.querySelector('.filter-container').hidden = false
+    
     renderGallery()
 }
 
@@ -35,7 +37,7 @@ function openUserOpts() {
 function onFilterBy(el) {
     const str = el.innerText
     changeFilterBy(str)
-    const value = changeFilterMapValue(str)
+    changeFilterMapValue(str)
     renderFilterOpts()
     renderGallery()
     
@@ -56,3 +58,7 @@ function renderFilterOpts() {
          <span style="font-size:${gWordFilterMap.happy}px" onclick="onFilterBy(this)">happy</span>`
 }
 
+function onFilterByText(str){
+changeFilterBy(str)
+renderGallery()
+}

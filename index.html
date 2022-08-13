@@ -2,12 +2,15 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Meme Generator</title>
     <link rel="stylesheet" href="css/main.css">
-    
+
 </head>
 
 <body onload="onInit()">
@@ -16,24 +19,45 @@
         <img onclick="openUserOpts()" class="user-opts" src="icons/hamburger.png">
         <div class="list flex">
             <ul class="flex clean-ul">
-                <li onclick="renderSavedMemes()"><a >Saved Memes</a></li>
+                <li onclick="renderSavedMemes()"><a>My Memes</a></li>
                 <li onclick="backToGallery()"><a>Gallery</a></li>
                 <li onclick="backToGallery()"><a>About</a></li>
             </ul>
         </div>
     </header>
-
-    <main>
+    <div class="filter-container">
         <section class="flex filter-section">
             <div class="sort-opts"></div>
-            <button onclick="onRandomMeme()">I'm Flexible!</button>
+            <div class="flex text-filter">
+                <h5>Search:</h5>
+                <input oninput="onFilterByText(this.value)" list="filters">
+                <datalist id="filters">
+                    <option value="funny">funny</option>
+                    <option value="animals">animals</option>
+                    <option value="cute">cute</option>
+                    <option value="baby">baby</option>
+                    <option value="classic">classic</option>
+                    <option value="movies">movies</option>
+                    <option value="politicians">politicians</option>
+                    <option value="happy">happy</option>
+                </datalist>
+            </div>
         </section>
+
+    </div>
+
+    <main>
+        <div class="flex flexible-btn">
+            <button onclick="onRandomMeme()">I'm Flexible!</button>
+
+        </div>
+
 
         <div class=" main-layout grid-container"></div>
     </main>
 
     <div hidden class="editor">
-        
+
         <div class="editor-container">
             <div class="canvas-container">
                 <canvas class="canvas" width="400px" height="400px" style="background-color:white;"></canvas>
@@ -67,6 +91,14 @@
                 </select>
                 <button onclick="changeFontSize('plus')"><img src="./icons/increase font - icon.png"></button>
                 <button onclick="changeFontSize('minus')"><img src="./icons/decrease font - icon.png"></button>
+
+                <div class="flex emoji-btns">
+                    <button onclick="onAddLine('🤣')">🤣</button>
+                    <button onclick="onAddLine('😁')">😁</button>
+                    <button onclick="onAddLine('😉')">😉</button>
+                    <button onclick="onAddLine('😎')">😎</button>
+                    <button onclick="onAddLine('❤️')">❤️</button>
+                </div>
             </div>
         </div>
         <div class="flex local-btns">

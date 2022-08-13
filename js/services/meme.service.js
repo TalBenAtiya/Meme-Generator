@@ -14,37 +14,67 @@ function setMeme(id) {
         selectedLineIdx: 0,
         lines: [
             {
-                txt: isFlexible ? gRandomLines[getRandomInt(0, gRandomLines.length - 1)] : 'Change Text',
+                txt: isFlexible ? gRandomLines[getRandomInt(0, gRandomLines.length - 1)] : 'Upper Text',
                 font: 'Impact',
                 size: 30,
                 align: 'center',
                 color: 'white',
                 strokeClr: 'black',
                 pos: { x: gElCanvas.width / 2, y: 50 },
+                isDrag: false,
             },
         ],
     }
     isFlexible = false
 }
 
-function addMemeLine() {
+function addMemeLine(str) {
     let pos
-    if (gMeme.selectedLineIdx >= 1) {
+    if (str) {
         pos = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+        gMeme.lines.push(
+            {
+                txt: str,
+                font: 'impact',
+                size: 30,
+                align: 'center',
+                color: 'white',
+                strokeClr: 'black',
+                pos: pos,
+            }
+        )
+        return
     } else {
-        pos = { x: gElCanvas.width / 2, y: gElCanvas.height - 50 }
-    }
-    gMeme.lines.push(
-        {
-            txt: 'Change Txt',
-            font: 'impact',
-            size: 30,
-            align: 'center',
-            color: 'white',
-            strokeClr: 'black',
-            pos: pos,
+        console.log(gMeme.selectedLineIdx);
+        if (gMeme.selectedLineIdx < 1) {
+            pos = { x: gElCanvas.width / 2, y: gElCanvas.height - 50 }
+            gMeme.lines.push(
+                {
+                    txt: 'Bottom Text',
+                    font: 'impact',
+                    size: 30,
+                    align: 'center',
+                    color: 'white',
+                    strokeClr: 'black',
+                    pos: pos,
+                }
+            )
+        } else {
+            pos = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+            gMeme.lines.push(
+                {
+                    txt: 'New Text',
+                    font: 'impact',
+                    size: 30,
+                    align: 'center',
+                    color: 'white',
+                    strokeClr: 'black',
+                    pos: pos,
+                }
+            )
         }
-    )
+    }
+
     gMeme.selectedLineIdx++
 }
 
@@ -85,7 +115,7 @@ function lineStrokeColor(color) {
 
 function changeMemeLine() {
     gMeme.selectedLineIdx++
-    if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx = 0
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
 }
 
 function memeFontSize(str) {
@@ -124,4 +154,37 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function isLineClicked(startX, startY) {
+    for (var i = 0; i < gMeme.lines.length; i++) {
+        const { width } = gCtx.measureText(gMeme.lines[i].txt)
+        if (textHittest(startX, startY, i, width)) {
+            gMeme.selectedLineIdx = i
+            gMeme.lines[gMeme.selectedLineIdx].isDrag = true
+
+        }
+    }
+}
+
+function textHittest(x, y, textIndex, width) {
+    const line = gMeme.lines[textIndex];
+    if (line.align === 'center') {
+        return (line.pos.x >= x - (width / 2) && line.pos.x <= x + (width / 2) && line.pos.y <= y + line.size && line.pos.y >= y - line.size)
+    }
+    if (line.align === 'right') {
+        return (line.pos.x >= x && line.pos.x <= x + width && line.pos.y <= y + line.size && line.pos.y >= y - line.size)
+    }
+    if (line.align === 'left') {
+        return (line.pos.x >= x && line.pos.x <= x + width && line.pos.y <= y + line.size && line.pos.y >= y - line.size)
+    }
+}
+
+function moveText(dx, dy) {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
+}
+
+function setTextDrag(bollean) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = bollean
 }

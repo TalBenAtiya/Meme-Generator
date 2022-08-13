@@ -1,0 +1,132 @@
+.editor {
+    min-height: 600px;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--clr3);
+}
+
+
+.editor-container {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas-container {
+    width: 400px;
+    height: 400px;
+    margin-bottom: 3em;
+}
+
+
+.editor-opts {
+    display: grid;
+    height: fit-content;
+    grid-template-columns: repeat(5, 50px);
+    grid-template-rows: repeat(4, 50px);
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 3em;
+}
+
+.editor-opts .emoji-btns button {
+    padding: 5px;
+    font-size: 30px;
+    margin-inline-end: 0.6em;
+}
+
+.editor-opts input,
+select {
+    background-color: var(--clr-secondary);
+    border: 0;
+    height: 30px;
+    border-radius: 2em;
+    padding-inline-start: 15px;
+    font-size: 15px;
+}
+
+.editor-opts button {
+    max-height: 50px;
+    max-width: 50px;
+    border: 0;
+    padding: 15px;
+    background-color: var(--clr-secondary);
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+.editor-opts button:hover {
+    background-color: var(--clr-main);
+}
+
+.editor-opts img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.meme-text {
+    grid-column: 1 / -1;
+}
+
+.font {
+    grid-column: span 3;
+}
+
+.stroke-clr {
+    position: relative;
+}
+
+.stroke-clr button,
+.stroke-clr input {
+    position: absolute;
+    transform: translate(0, -50%);
+}
+
+.stroke-clr input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.font-clr button,
+.font-clr input {
+    position: absolute;
+    transform: translate(0, -50%);
+}
+
+.font-clr input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.local-btns {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 0.8em
+}
+
+.local-btns button {
+    font-size: 15px;
+    padding: 0.5em;
+    background-color: var(--clr-main);
+    border: none;
+    border-radius: 0.6em;
+    color: white;
+}
+
+.local-btns>:first-child {
+    background-color: rgb(161, 38, 218);
+
+}
+
+.local-btns>:last-child {
+    background-color: rgb(27, 122, 216);
+
+}

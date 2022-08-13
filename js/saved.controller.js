@@ -6,8 +6,12 @@ function onSaveMeme() {
 }
 
 function renderSavedMemes() {
+    document.querySelector('.editor').hidden = true
+    document.querySelector('main').hidden = false
+    document.querySelector('.filter-container').hidden = false
+
     const memes = getSavedMemesForDisplay()
-    console.log(memes);
+    if (memes.length === 0) return
     const strsHTML = memes.map(meme => `<img onclick="onEditMeme('${meme.id}')" src="${meme.imgUrl}" alt="">`)
     const elGrid = document.querySelector('.grid-container')
     elGrid.innerHTML = strsHTML.join('')
@@ -15,9 +19,7 @@ function renderSavedMemes() {
     
 }
 
-
 function onEditMeme(id) {
-    console.log(id);
     const editor = document.querySelector('.editor')
     editor.hidden = false
     renderSavedMeme(id)
@@ -26,8 +28,8 @@ function onEditMeme(id) {
 }
 
 function renderSavedMeme(id) {
-    const meme = setSavedMeme(id)
-    const currMeme = meme[0]
+    const currMeme = setSavedMeme(id)
+    updateMeme(currMeme)
 
     let img = new Image()
     img.src = `./img/${currMeme.selectedImgId}.jpg`;

@@ -8,18 +8,31 @@ function getSavedMemesForDisplay(){
     return gSavedMemes
 }
 
+// function saveMeme(url) {
+//     let meme = getMeme()
+//     meme.id = makeId()
+//     meme.imgUrl = url
+//     gSavedMemes.push(meme)
+//     _saveMemeToStorage()
+// }
+
 function saveMeme(url) {
     let meme = getMeme()
-    meme.id = makeId()
-    meme.imgUrl = url
-    gSavedMemes.push(meme)
+    if (meme.id === undefined) {
+        meme.id = makeId()
+        meme.imgUrl = url
+        gSavedMemes.push(meme)
+    } else {
+        const memeIdx = getSavedMemeIdxById(meme.id)
+        meme.imgUrl = url
+        gSavedMemes.splice(memeIdx, 1, meme)
+    }
     _saveMemeToStorage()
 }
 
 function setSavedMeme(id){
     const currMeme = gSavedMemes.filter( meme => meme.id === id)
-    gMeme = currMeme
-    return currMeme
+    return currMeme[0]
 }
 
 function makeId(length = 3) {
@@ -29,4 +42,12 @@ function makeId(length = 3) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length))
     }
     return txt
+}
+
+function updateMeme(currMeme){
+    gMeme = currMeme
+}
+
+function getSavedMemeIdxById(id){
+    return gSavedMemes.findIndex(meme => meme.id === id)
 }
