@@ -12,7 +12,7 @@ function onSetImg(id) {
     const editor = document.querySelector('.editor')
     editor.hidden = false
     setMeme(id)
-    renderMeme(id)
+    renderMeme()
 
     document.querySelector('main').hidden = true
 }
@@ -20,6 +20,8 @@ function onSetImg(id) {
 function backToGallery() {
     document.querySelector('.editor').hidden = true
     document.querySelector('main').hidden = false
+
+    renderGallery()
 }
 
 function openUserOpts() {
@@ -54,11 +56,3 @@ function renderFilterOpts() {
          <span style="font-size:${gWordFilterMap.happy}px" onclick="onFilterBy(this)">happy</span>`
 }
 
-function renderSavedMemes(){
-    const memes = loadFromStorage('memesDB')
-    console.log(memes);
-    const strsHTML = memes.map(meme => `<img onclick="onSetImg(${meme.selectedImgId})" src="${meme.imgUrl}" alt="">`)
-
-    const elGrid = document.querySelector('.grid-container')
-    elGrid.innerHTML = strsHTML.join('')
-}

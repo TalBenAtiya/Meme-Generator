@@ -26,7 +26,6 @@ let gImgs = [
 ]
 
 function getGalleryImg() {
-    console.log(gFilterBy);
     if (gFilterBy === 'all') return gImgs
    return gImgs.filter( img => img.keywords.includes(gFilterBy))
 

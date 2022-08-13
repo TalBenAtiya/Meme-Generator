@@ -1,8 +1,7 @@
 "use strict"
 
 let gMeme
-let gSavedMemes = []
-let gRandomLines = ['i like falafel!', 'god damn!', 'jiggle wiggle', 'oh snap', 'hehe that dog', 'LMAO','frogy wogy', 'what are those','hop hop', 'funny buns', 'LOL', 'your mum', 'oew pew', 'penny weeny','loco coco' ]
+let gRandomLines = ['i like falafel!', 'god damn!', 'jiggle wiggle', 'oh snap', 'hehe that dog', 'LMAO', 'frogy wogy', 'what are those', 'hop hop', 'funny buns', 'LOL', 'oew pew', 'penny weeny', 'loco coco']
 let isFlexible = false
 
 function getMeme() {
@@ -47,7 +46,6 @@ function addMemeLine() {
         }
     )
     gMeme.selectedLineIdx++
-    console.log(gMeme.selectedLineIdx);
 }
 
 function removeMemeLine() {
@@ -98,17 +96,11 @@ function memeFontSize(str) {
     }
 }
 
-function saveMeme(url) {
-    gMeme.imgUrl = url
-    gSavedMemes.push(gMeme)
-    _saveMemeToStorage()
-}
-
 function _saveMemeToStorage() {
     saveToStorage('memesDB', gSavedMemes)
 }
 
-function createRandomMeme(){
+function createRandomMeme() {
     gMeme = {
         selectedImgId: getRandomInt(1, gImgs.length),
         selectedLineIdx: 0,

@@ -11,7 +11,6 @@ function onInit() {
 
 function renderMeme() {
     const meme = getMeme()
-    console.log(meme);
     let img = new Image()
     img.src = `./img/${meme.selectedImgId}.jpg`;
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
@@ -22,7 +21,8 @@ function renderMeme() {
             gCtx.textAlign = line.align;
             gCtx.strokeStyle = line.strokeClr;
             gCtx.lineWidth = 5;
-            gCtx.strokeStyle = gCtx.shadowColor = line.strokeClr
+            gCtx.strokeStyle = line.strokeClr
+            gCtx.shadowColor = 'black'
             gCtx.shadowOffsetX = gCtx.shadowOffsetY = 3
             gCtx.shadowBlur = 5
             gCtx.fillStyle = line.color;
@@ -106,16 +106,14 @@ function onFontStyle(str){
     renderMeme()
 }
 
-function onSaveMeme(){
-    const imgUrl = gElCanvas.toDataURL();
-    saveMeme(imgUrl)
+function onDownloadMeme(elLink) {
+   const data = downloadMeme()
+   elLink.href = data;
+   elLink.download = 'My-Meme'
 }
 
-function onDownloadMeme(elLink) {
-    const data = gElCanvas.toDataURL();
-    elLink.href = data;
-    elLink.download = 'My-Meme';
-    
+function onShareMeme(){
+    shareMeme()
 }
 
 function onRandomMeme(){
@@ -123,3 +121,4 @@ function onRandomMeme(){
     onSetImg(imgId)
     renderMeme()
 }
+
