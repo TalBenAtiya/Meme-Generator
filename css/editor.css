@@ -23,7 +23,7 @@
     min-height: 400px;
     display: flex;
     align-items: center;
-    margin-inline-start: 2.7em ;
+    margin-inline-start: 2.7em;
 }
 
 
@@ -117,7 +117,7 @@
     gap: 0.8em
 }
 
-.local-btns > button{
+.local-btns>button {
     font-size: 15px;
     padding: 0.5em;
     background-color: var(--clr-main);
@@ -140,7 +140,7 @@
     grid-column: span 5;
 }
 
-.editor .msg-container{
+.editor .msg-container {
     align-items: center;
     justify-content: center;
     margin-top: 20px;
@@ -154,4 +154,17 @@
     color: white;
     transition: 0.3s;
     opacity: 0;
+}
+
+.editor-container > button {
+    position: absolute;
+    left: 20px;
+    top: 120px;
+    background-color: transparent;
+    border: 0;
+    font-size: 15px;
+}
+
+.editor-container button:hover {
+    color: var(--clr-main);
 }
