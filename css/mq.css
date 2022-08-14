@@ -1,5 +1,9 @@
 /* Tablet */
 @media (min-width: 650px) {
+    .canvas {
+        width: 400px;
+    }
+
     .main-header .list {
         position: static;
         width: fit-content;
@@ -18,16 +22,18 @@
 
     .main-header ul>li {
         display: flex;
+        margin: 0;
         padding-right: 0.5em;
         margin-inline-start: 0.5em;
-        margin-bottom: 0;
         width: fit-content;
         height: 10px;
+       
     }
 
 
     .canvas-container {
         margin-inline-end: 3em;
+        /* margin-inline-start: 15%; */
     }
 
     .main-header ul>li:hover {
@@ -39,9 +45,21 @@
     }
 }
 
+
+
 /* Desktop */
 @media (min-width: 950px) {
+    .grid-container {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+    }
     .editor div {
         flex-direction: row;
+    }
+
+}
+
+@media (max-width: 450px){
+    .grid-container {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
     }
 }

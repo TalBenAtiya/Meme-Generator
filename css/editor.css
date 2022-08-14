@@ -14,10 +14,17 @@
     align-items: center;
 }
 
+.canvas {
+    border-radius: 1em;
+}
+
 .canvas-container {
     width: 400px;
-    height: 400px;
+    min-height: 400px;
     margin-bottom: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -25,11 +32,10 @@
     display: grid;
     height: fit-content;
     grid-template-columns: repeat(5, 50px);
-    grid-template-rows: repeat(4, 50px);
+    grid-template-rows: repeat(5, 50px);
     gap: 1em;
     align-items: center;
     justify-content: center;
-    align-content: center;
     margin-bottom: 3em;
 }
 
@@ -39,8 +45,8 @@
     margin-inline-end: 0.6em;
 }
 
-.editor-opts input,
-select {
+.meme-text,
+.font {
     background-color: var(--clr-secondary);
     border: 0;
     height: 30px;
@@ -129,4 +135,8 @@ select {
 .local-btns>:last-child {
     background-color: rgb(27, 122, 216);
 
+}
+
+.btn-upload-file {
+    grid-column: span 5;
 }

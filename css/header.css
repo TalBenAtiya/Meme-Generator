@@ -4,6 +4,7 @@
     padding: 1em;
     height: 100px;
     justify-content: space-between;
+    z-index: 1000;
 }
 
 .main-header > img:first-child{
@@ -16,18 +17,18 @@
 
 .main-header div{
     position: fixed;
-    height: 50%;
+    height: 100%;
     top: 100px;
     right: 0;
-    width: 45%;
+    width: 100%;
     background-color: var(--clr-secondary);
     justify-content: center;
     overflow: hidden;
+    transition: 0.3s;
 }
 
 .main-header ul{
     flex-direction: column;
-    justify-content: space-between;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -42,6 +43,7 @@
     width: 100%;
     padding-top: 20px;
     cursor: pointer;
+    margin-top: 50px;
 }
 
 .main-header ul>li:hover{
@@ -68,3 +70,4 @@
     /* height: 60px; */
     /* align-self: flex-end; */
 /* } */
+

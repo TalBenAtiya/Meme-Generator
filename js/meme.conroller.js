@@ -13,10 +13,12 @@ function onInit() {
 }
 
 function renderMeme() {
+    
     const meme = getMeme()
     let img = new Image()
     img.src = `./img/${meme.selectedImgId}.jpg`;
     img.onload = () => {
+        gElCanvas.height = (img.height / img.width) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         meme.lines.forEach(line => {
 
@@ -165,4 +167,16 @@ function getEvPos(ev) {
         }
     }
     return pos
+}
+
+function onUploadImg(ev, onImageReady){
+    var reader = new FileReader()
+
+    reader.onload = (event) => {
+        var img = new Image()
+        img.src = event.target.result
+        img.onload = onImageReady.bind(null, img)
+        reader.readAsDataURL(ev.target.files[0])
+    }
+
 }

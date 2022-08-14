@@ -5,37 +5,48 @@ let gFilterBy = 'all'
 let gImgId = 1
 
 let gImgs = [
-    { id: gImgId++, url: './img/1.jpg', keywords: ['politicians', 'funny',] },
-    { id: gImgId++, url: './img/2.jpg', keywords: ['animals', 'cute',] },
-    { id: gImgId++, url: './img/3.jpg', keywords: ['baby', 'animals', 'cute',] },
-    { id: gImgId++, url: './img/4.jpg', keywords: ['cute', 'animals',] },
-    { id: gImgId++, url: './img/5.jpg', keywords: ['baby', 'happy', 'classic',] },
-    { id: gImgId++, url: './img/6.jpg', keywords: ['funny', 'classic',] },
-    { id: gImgId++, url: './img/7.jpg', keywords: ['funny', 'happy',] },
-    { id: gImgId++, url: './img/8.jpg', keywords: ['movies', 'happy',] },
-    { id: gImgId++, url: './img/9.jpg', keywords: ['laugh', 'classic',] },
-    { id: gImgId++, url: './img/10.jpg', keywords: ['laugh', 'politicians',] },
-    { id: gImgId++, url: './img/11.jpg', keywords: ['movies', 'boxing',] },
-    { id: gImgId++, url: './img/12.jpg', keywords: ['funny', 'classic', 'celebrity',] },
-    { id: gImgId++, url: './img/13.jpg', keywords: ['movies', 'classic', 'celebrity',] },
-    { id: gImgId++, url: './img/14.jpg', keywords: ['movies', 'classic', 'celebrity',] },
-    { id: gImgId++, url: './img/15.jpg', keywords: ['movies', 'classic', 'celebrity',] },
-    { id: gImgId++, url: './img/16.jpg', keywords: ['movies', 'funny', 'laugh',] },
-    { id: gImgId++, url: './img/17.jpg', keywords: ['politicians',] },
-    { id: gImgId++, url: './img/18.jpg', keywords: ['movies', 'classic',] },
+    { id: gImgId++, url: './img/1.jpg', keywords: ['politicians', 'funny',], size:'xs'},
+    { id: gImgId++, url: './img/2.jpg', keywords: ['animals', 'cute',], size:'xxs' },
+    { id: gImgId++, url: './img/3.jpg', keywords: ['baby', 'animals', 'cute',], size: 'xs' },
+    { id: gImgId++, url: './img/4.jpg', keywords: ['cute', 'animals',], size: 'xxs'  },
+    { id: gImgId++, url: './img/5.jpg', keywords: ['baby', 'happy', 'classic',], size: 'xxs' },
+    { id: gImgId++, url: './img/6.jpg', keywords: ['funny', 'classic',], size: 'xs' },
+    { id: gImgId++, url: './img/7.jpg', keywords: ['funny', 'happy',], size: 'xxs' },
+    { id: gImgId++, url: './img/8.jpg', keywords: ['movies', 'happy',], size: 'm' },
+    { id: gImgId++, url: './img/9.jpg', keywords: ['laugh', 'classic',], size:'xs'},
+    { id: gImgId++, url: './img/10.jpg', keywords: ['laugh', 'politicians',], size: 's'},
+    { id: gImgId++, url: './img/11.jpg', keywords: ['movies', 'boxing',], size: 'xxs' },
+    { id: gImgId++, url: './img/12.jpg', keywords: ['funny', 'classic', 'celebrity',], size: 's'},
+    { id: gImgId++, url: './img/13.jpg', keywords: ['movies', 'classic', 'celebrity',], size: 'xxs' },
+    { id: gImgId++, url: './img/14.jpg', keywords: ['movies', 'classic', 'celebrity',], size:'xs'  },
+    { id: gImgId++, url: './img/15.jpg', keywords: ['movies', 'classic', 'celebrity',], size:'xs'  },
+    { id: gImgId++, url: './img/16.jpg', keywords: ['movies', 'funny', 'laugh',], size:'xs' },
+    { id: gImgId++, url: './img/17.jpg', keywords: ['politicians',], size:'xxs'},
+    { id: gImgId++, url: './img/18.jpg', keywords: ['movies', 'classic',], size:'xxs' },
+    { id: gImgId++, url: './img/19.jpg', keywords: ['celebrity',], size:'xs' },
+    { id: gImgId++, url: './img/20.jpg', keywords: ['happy',], size:'xs' },
+    { id: gImgId++, url: './img/21.jpg', keywords: ['movie', 'classic'], size:'xxs' },
+    { id: gImgId++, url: './img/22.jpg', keywords: ['baby', 'funny'], size:'m' },
+    { id: gImgId++, url: './img/23.jpg', keywords: ['politicians',], size:'s' },
+    { id: gImgId++, url: './img/24.jpg', keywords: ['animals', 'funny'], size:'s' },
+    { id: gImgId++, url: './img/25.jpg', keywords: ['celebrity',], size:'l' },
 ]
 
 function getGalleryImg() {
     if (gFilterBy === 'all' || gFilterBy === '') return gImgs
-   return gImgs.filter( img => img.keywords.includes(gFilterBy))
+    return gImgs.filter(img => img.keywords.join('|').includes(gFilterBy))
 }
 
-function changeFilterBy(str){
+function changeFilterBy(str) {
     gFilterBy = str
 }
 
-function changeFilterMapValue(str){
+function changeFilterMapValue(str) {
     if (gWordFilterMap[str] >= 50) return
     gWordFilterMap[str]++
+    return gWordFilterMap
+}
+
+function getWordMap() {
     return gWordFilterMap
 }

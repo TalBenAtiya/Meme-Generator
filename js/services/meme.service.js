@@ -1,7 +1,7 @@
 "use strict"
 
 let gMeme
-let gRandomLines = ['i like falafel!', 'god damn!', 'jiggle wiggle', 'oh snap', 'hehe that dog', 'LMAO', 'frogy wogy', 'what are those', 'hop hop', 'funny buns', 'LOL', 'oew pew', 'penny weeny', 'loco coco']
+let gRandomLines = ['I like falafel!', 'God damn!', 'Maybe you\'re right', 'Oh snap', 'Got your back', 'Let\'s get drunk!', 'Good vibes only', 'What are those?',]
 let isFlexible = false
 
 function getMeme() {

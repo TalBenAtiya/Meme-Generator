@@ -27,6 +27,7 @@
     </header>
     <div class="filter-container">
         <section class="flex filter-section">
+            <button class="btn-flexible" onclick="onRandomMeme()">I'm Flexible!</button>
             <div class="sort-opts"></div>
             <div class="flex text-filter">
                 <h5>Search:</h5>
@@ -43,29 +44,23 @@
                 </datalist>
             </div>
         </section>
-
     </div>
 
     <main>
-        <div class="flex flexible-btn">
-            <button onclick="onRandomMeme()">I'm Flexible!</button>
-
-        </div>
-
-
         <div class=" main-layout grid-container"></div>
     </main>
 
     <div hidden class="editor">
 
+
         <div class="editor-container">
             <div class="canvas-container">
-                <canvas class="canvas" width="400px" height="400px" style="background-color:white;"></canvas>
+                <canvas class="canvas" width="350px"></canvas>
             </div>
+            
+            
             <div class="editor-opts">
-
                 <input oninput="onSetLineTxt(this.value)" class="meme-text" type="text" placeholder="Change Text">
-
                 <button onclick="changeSelectedLine()">
                     <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.png">
                 </button>
