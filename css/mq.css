@@ -27,13 +27,7 @@
         margin-inline-start: 0.5em;
         width: fit-content;
         height: 10px;
-       
-    }
 
-
-    .canvas-container {
-        margin-inline-end: 3em;
-        /* margin-inline-start: 15%; */
     }
 
     .main-header ul>li:hover {
@@ -50,15 +44,19 @@
 /* Desktop */
 @media (min-width: 950px) {
     .grid-container {
-        grid-template-columns: repeat(4, minmax(200px, 1fr));
+        grid-template-columns: repeat(4, minmax(150px, 300px));
     }
+
     .editor div {
         flex-direction: row;
     }
 
+    .canvas-container {
+        margin-inline-end: 5em;
+    }
 }
 
-@media (max-width: 450px){
+@media (max-width: 450px) {
     .grid-container {
         grid-template-columns: repeat(1, minmax(200px, 1fr));
     }

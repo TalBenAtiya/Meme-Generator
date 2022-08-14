@@ -14,7 +14,7 @@ let gImgs = [
     { id: gImgId++, url: './img/7.jpg', keywords: ['funny', 'happy',], size: 'xxs' },
     { id: gImgId++, url: './img/8.jpg', keywords: ['movies', 'happy',], size: 'm' },
     { id: gImgId++, url: './img/9.jpg', keywords: ['laugh', 'classic',], size:'xs'},
-    { id: gImgId++, url: './img/10.jpg', keywords: ['laugh', 'politicians',], size: 's'},
+    { id: gImgId++, url: './img/10.jpg', keywords: ['laugh', 'politicians',], size: 'xs'},
     { id: gImgId++, url: './img/11.jpg', keywords: ['movies', 'boxing',], size: 'xxs' },
     { id: gImgId++, url: './img/12.jpg', keywords: ['funny', 'classic', 'celebrity',], size: 's'},
     { id: gImgId++, url: './img/13.jpg', keywords: ['movies', 'classic', 'celebrity',], size: 'xxs' },

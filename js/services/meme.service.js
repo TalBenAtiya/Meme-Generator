@@ -170,13 +170,13 @@ function isLineClicked(startX, startY) {
 function textHittest(x, y, textIndex, width) {
     const line = gMeme.lines[textIndex];
     if (line.align === 'center') {
-        return (line.pos.x >= x - (width / 2) && line.pos.x <= x + (width / 2) && line.pos.y <= y + line.size && line.pos.y >= y - line.size)
+        return ( x > line.pos.x - (width / 2) && x < line.pos.x + width && line.pos.y <= y + line.size && line.pos.y >= y - line.size)
     }
     if (line.align === 'right') {
         return (line.pos.x >= x && line.pos.x <= x + width && line.pos.y <= y + line.size && line.pos.y >= y - line.size)
     }
     if (line.align === 'left') {
-        return (line.pos.x >= x && line.pos.x <= x + width && line.pos.y <= y + line.size && line.pos.y >= y - line.size)
+        return (x > line.pos.x && x < line.pos.x + (width + 40) && line.pos.y <= y + line.size && line.pos.y >= y - line.size)
     }
 }
 

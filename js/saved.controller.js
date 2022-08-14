@@ -3,6 +3,7 @@
 function onSaveMeme() {
     const imgUrl = gElCanvas.toDataURL();
     saveMeme(imgUrl)
+    flashMsg()
 }
 
 function renderSavedMemes() {
@@ -51,4 +52,10 @@ function renderSavedMeme(id) {
         }
         )
     }
+}
+
+function flashMsg(){
+    const elMsg = document.querySelector('.flash-msg')
+    elMsg.style.opacity = '100%'
+    setTimeout( () => {elMsg.style.opacity = 0 }, 2000)
 }
